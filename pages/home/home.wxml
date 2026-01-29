@@ -1,0 +1,54 @@
+<!--pages/home/home.wxml-->
+<view class="home-container">
+  <!-- Logo 区域 -->
+  <view class="logo-section">
+    <view class="logo-wrapper">
+      <view class="logo-bg">
+        <text class="logo-number">9</text>
+      </view>
+      <view class="logo-accent"></view>
+    </view>
+    <text class="app-title">SUDOKU</text>
+  </view>
+
+  <!-- 难度选择 -->
+  <view class="mode-section">
+
+    <view class="mode-list">
+      <view
+        class="mode-item {{selectedMode === index ? 'active' : ''}}"
+        wx:for="{{modes}}"
+        wx:key="id"
+        data-index="{{index}}"
+        bindtap="selectMode"
+      >
+        <view class="mode-icon">
+          <view
+            class="dot"
+            wx:for="{{item.dots}}"
+            wx:for-item="dotIndex"
+            wx:key="dotIndex"
+          ></view>
+        </view>
+        <view class="mode-info">
+          <text class="mode-name">{{item.name}}</text>
+          <text class="mode-desc">{{item.holes}} 个空格</text>
+        </view>
+        <view class="mode-check">
+          <view class="check-icon"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始按钮 -->
+  <view class="button-group">
+    <button class="start-btn" bindtap="startNewGame" hover-class="btn-active-hover" hover-stay-time="100">
+      <text>{{hasSavedGame ? '新游戏' : '开始游戏'}}</text>
+    </button>
+
+    <button class="continue-btn" wx:if="{{hasSavedGame}}" bindtap="continueGame" hover-class="btn-active-hover" hover-stay-time="100">
+      <text>继续游戏</text>
+    </button>
+  </view>
+</view>

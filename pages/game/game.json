@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "数独大师",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "sudoku-board": "/components/sudoku-board/sudoku-board"
+  }
+}

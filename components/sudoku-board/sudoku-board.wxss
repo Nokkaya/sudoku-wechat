@@ -1,0 +1,116 @@
+/* components/sudoku-board/sudoku-board.wxss */
+.sudoku-board {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48rpx;
+}
+
+.board-grid {
+  position: relative;
+  background: #2d3436;
+  border-radius: 48rpx;
+  padding: 20rpx;
+  box-shadow: 0 32rpx 120rpx rgba(45, 52, 54, 0.2);
+  overflow: hidden;
+}
+
+.board-row {
+  display: flex;
+}
+
+.board-cell {
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1rpx solid rgba(250, 249, 247, 0.1);
+  border-bottom: 1rpx solid rgba(250, 249, 247, 0.1);
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+/* 移除最后一列的右边框 */
+.board-cell:nth-child(9) {
+  border-right: none;
+}
+
+/* 移除最后一行的底边框 */
+.board-row:nth-child(9) .board-cell {
+  border-bottom: none;
+}
+
+/* 3x3 宫格粗线 - 使用白色粗线 */
+.board-cell:nth-child(3),
+.board-cell:nth-child(6) {
+  border-right: 6rpx solid rgba(250, 249, 247, 0.9);
+}
+
+.board-cell:nth-child(9) {
+  border-right: none;
+}
+
+.board-row:nth-child(3) .board-cell,
+.board-row:nth-child(6) .board-cell {
+  border-bottom: 6rpx solid rgba(250, 249, 247, 0.9);
+}
+
+.board-row:nth-child(9) .board-cell {
+  border-bottom: none;
+}
+
+/* 数字样式 */
+.cell-number {
+  font-size: 44rpx;
+  font-weight: 600;
+  color: #faf9f7;
+  font-family: -apple-system, "SF Mono", monospace;
+}
+
+/* 原始数字（预填充） - 半透明白色 */
+.board-cell.original .cell-number {
+  color: rgba(250, 249, 247, 0.4);
+}
+
+/* 用户填入的数字 - 保持白色但可能需要区分 */
+.board-cell.filled:not(.original) .cell-number {
+  color: #00b894;
+}
+
+/* 空格 */
+.board-cell.empty {
+  color: transparent;
+}
+
+/* 选中状态 - 绿色背景 */
+.board-cell.selected {
+  background: #00b894 !important;
+}
+
+.board-cell.selected .cell-number {
+  color: #ffffff !important;
+}
+
+/* 高亮同行、同列、同宫格 - 半透明白色 */
+.board-cell.highlight:not(.selected) {
+  background: rgba(250, 249, 247, 0.08);
+}
+
+/* 点击动画 */
+.board-cell:active,
+.cell-active-hover {
+  transform: scale(0.95);
+}
+
+/* 小屏幕适配 */
+@media (max-width: 375px) {
+  .board-cell {
+    width: 60rpx;
+    height: 60rpx;
+  }
+
+  .cell-number {
+    font-size: 36rpx;
+  }
+}

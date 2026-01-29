@@ -1,0 +1,34 @@
+// components/sudoku-board/board.wxs
+function getCellClass(row, col, value, selectedCell) {
+  var classes = [];
+
+  // 基础样式
+  if (value !== 0) {
+    classes.push('filled');
+  } else {
+    classes.push('empty');
+  }
+
+  // 选中和高亮逻辑
+  if (selectedCell) {
+    if (selectedCell.row === row && selectedCell.col === col) {
+      classes.push('selected');
+    } else {
+      // 同行、同列、同宫格高亮
+      var isSameRow = selectedCell.row === row;
+      var isSameCol = selectedCell.col === col;
+      var isSameBlock = Math.floor(selectedCell.row / 3) === Math.floor(row / 3) &&
+                        Math.floor(selectedCell.col / 3) === Math.floor(col / 3);
+
+      if (isSameRow || isSameCol || isSameBlock) {
+        classes.push('highlight');
+      }
+    }
+  }
+
+  return classes.join(' ');
+}
+
+module.exports = {
+  getCellClass: getCellClass
+};

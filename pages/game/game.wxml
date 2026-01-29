@@ -1,0 +1,96 @@
+<!--pages/game/game.wxml-->
+<wxs src="./game.wxs" module="utils" />
+
+<view class="game-container">
+  <view class="container">
+    <!-- 顶部信息栏 -->
+    <view class="header">
+      <view class="header-left">
+        <view class="mode-tag">{{modeName}}</view>
+      </view>
+
+      <view class="header-center">
+        <view class="timer-wrapper">
+          <text class="timer">{{utils.formatTime(timer)}}</text>
+        </view>
+      </view>
+
+      <view class="header-right">
+        <text class="hint-label">提示</text>
+        <text class="hint-count">{{hints}}</text>
+      </view>
+    </view>
+
+    <!-- 数独棋盘 -->
+    <sudoku-board
+      board="{{board}}"
+      originalBoard="{{originalBoard}}"
+      selectedCell="{{selectedCell}}"
+      bind:cellselect="onCellSelect"
+    />
+
+    <!-- 数字键盘 -->
+    <view class="number-pad" wx:if="{{!isComplete}}">
+      <view
+        class="num-btn"
+        wx:for="{{9}}"
+        wx:key="index"
+        data-number="{{index + 1}}"
+        bindtap="onNumberInput"
+        hover-class="btn-active"
+        hover-stay-time="100"
+      >
+        {{index + 1}}
+      </view>
+      <view class="num-btn clear-btn" bindtap="onClear" hover-class="btn-active" hover-stay-time="100">
+        <view class="erase-icon"></view>
+      </view>
+    </view>
+
+    <!-- 功能按钮 -->
+    <view class="actions" wx:if="{{!isComplete}}">
+      <view class="action-btn hint-btn" bindtap="useHint" hover-class="btn-active" hover-stay-time="100">
+        <view class="icon-inner hint"></view>
+        <text class="action-text">提示</text>
+      </view>
+      <view class="action-btn restart-btn" bindtap="restart" hover-class="btn-active" hover-stay-time="100">
+        <view class="icon-inner restart"></view>
+        <text class="action-text">重来</text>
+      </view>
+    </view>
+
+    <!-- 退出确认弹窗 -->
+    <view class="modal-overlay" wx:if="{{showExitConfirm}}" bindtap="cancelExit">
+      <view class="modal" catchtap="true">
+        <view class="modal-icon">
+          <view class="icon-alert">!</view>
+        </view>
+        <text class="modal-title">返回主菜单？</text>
+        <text class="modal-text">当前游戏进度将丢失，确定要返回吗？</text>
+        <view class="modal-actions">
+          <view class="modal-btn modal-btn-secondary" bindtap="cancelExit" hover-class="btn-active">取消</view>
+          <view class="modal-btn modal-btn-primary" bindtap="exitToMenu" hover-class="btn-active">确定</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 通关弹窗 -->
+    <view class="completed-overlay" wx:if="{{isComplete}}">
+      <view class="completed-modal">
+        <text class="completed-title">恭喜通关</text>
+        <text class="completed-subtitle">你完成了数独挑战！</text>
+        <view class="completed-stats">
+          <view class="stat-item">
+            <text class="stat-value">{{utils.formatTime(timer)}}</text>
+            <text class="stat-label">用时</text>
+          </view>
+          <view class="stat-item">
+            <text class="stat-value">{{hints}}</text>
+            <text class="stat-label">剩余提示</text>
+          </view>
+        </view>
+        <button class="completed-btn" bindtap="restart">再玩一局</button>
+      </view>
+    </view>
+  </view>
+</view>

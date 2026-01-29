@@ -1,0 +1,117 @@
+/**app.wxss**/
+page {
+  background-color: #faf9f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans SC";
+  font-size: 28rpx;
+  color: #2d3436;
+}
+
+/* 全局通用样式 */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 按钮通用样式 */
+.btn {
+  border: none;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.btn:active,
+.btn-active-hover {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background: #2d3436;
+  color: #faf9f7;
+}
+
+.btn-secondary {
+  background: #f1f2f6;
+  color: #2d3436;
+}
+
+.btn-success {
+  background: #00b894;
+  color: white;
+}
+
+.btn-danger {
+  background: #ff6b6b;
+  color: white;
+}
+
+/* 卡片样式 */
+.card {
+  background: white;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 文本样式 */
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #b2bec3;
+}
+
+.text-primary {
+  color: #2d3436;
+}
+
+.text-success {
+  color: #00b894;
+}
+
+/* 间距工具类 */
+.mt-1 {
+  margin-top: 16rpx;
+}
+
+.mt-2 {
+  margin-top: 32rpx;
+}
+
+.mt-3 {
+  margin-top: 48rpx;
+}
+
+.mb-1 {
+  margin-bottom: 16rpx;
+}
+
+.mb-2 {
+  margin-bottom: 32rpx;
+}
+
+.mb-3 {
+  margin-bottom: 48rpx;
+}
+
+.p-1 {
+  padding: 16rpx;
+}
+
+.p-2 {
+  padding: 32rpx;
+}
+
+.p-3 {
+  padding: 48rpx;
+}

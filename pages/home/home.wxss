@@ -1,0 +1,261 @@
+/* pages/home/home.wxss */
+.home-container {
+  min-height: 100vh;
+  padding: 80rpx 40rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 960rpx;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Logo 区域 */
+.logo-section {
+  text-align: center;
+  margin-bottom: 64rpx;
+}
+
+.logo-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 32rpx;
+}
+
+.logo-bg {
+  width: 240rpx;
+  height: 240rpx;
+  background: #2d3436;
+  border-radius: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 32rpx 96rpx rgba(45, 52, 54, 0.15);
+}
+
+.logo-number {
+  font-size: 160rpx;
+  font-weight: 700;
+  color: #faf9f7;
+  line-height: 1;
+}
+
+.logo-accent {
+  position: absolute;
+  bottom: -8rpx;
+  right: -8rpx;
+  width: 48rpx;
+  height: 48rpx;
+  background: #00b894;
+  border-radius: 50%;
+  border: 8rpx solid #faf9f7;
+}
+
+.app-title {
+  display: block;
+  font-size: 72rpx;
+  font-weight: 700;
+  letter-spacing: 12rpx;
+  color: #2d3436;
+}
+
+/* 难度选择区域 */
+.mode-section {
+  margin-bottom: 48rpx;
+}
+
+.section-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  letter-spacing: 8rpx;
+  color: #b2bec3;
+  text-transform: uppercase;
+  margin-bottom: 32rpx;
+  display: block;
+}
+
+.mode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.mode-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 36rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  border: 4rpx solid #f1f2f6;
+  transition: all 0.2s ease;
+}
+
+.mode-item:active {
+  transform: scale(0.98);
+}
+
+.mode-item.active {
+  background: #2d3436;
+  border-color: #2d3436;
+}
+
+.mode-icon {
+  display: flex;
+  gap: 6rpx;
+  margin-right: 24rpx;
+  width: 80rpx;
+  align-items: center;
+}
+
+.mode-icon .dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #b2bec3;
+  border-radius: 50%;
+}
+
+.mode-item.active .mode-icon .dot {
+  background: #00b894;
+}
+
+.mode-info {
+  flex: 1;
+}
+
+.mode-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 4rpx;
+}
+
+.mode-item.active .mode-name {
+  color: #ffffff;
+}
+
+.mode-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #636e72;
+}
+
+.mode-item.active .mode-desc {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mode-check {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 4rpx solid #dfe6e9;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.mode-item.active .check-icon {
+  background: #00b894;
+  border-color: #00b894;
+}
+
+/* 开始按钮区域 */
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 24rpx;
+}
+
+.start-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  flex: 1;
+  padding: 32rpx 40rpx;
+  background: #2d3436;
+  color: #ffffff;
+  border: none;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  box-shadow: 0 8rpx 32rpx rgba(45, 52, 54, 0.25);
+  transition: all 0.2s ease;
+}
+
+.start-btn::after {
+  border: none;
+}
+
+.start-btn:active,
+.start-btn.btn-active-hover {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.continue-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  flex: 1;
+  padding: 32rpx 40rpx;
+  background: #ffffff;
+  color: #2d3436;
+  border: 3rpx solid #2d3436;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.continue-btn::after {
+  border: none;
+}
+
+.continue-btn:active,
+.continue-btn.btn-active-hover {
+  transform: scale(0.97);
+  background: #f1f2f6;
+}
+
+.arrow-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 24rpx;
+  position: relative;
+}
+
+.arrow-icon::before,
+.arrow-icon::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  border-radius: 4rpx;
+}
+
+.arrow-icon::before {
+  width: 28rpx;
+  height: 6rpx;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.arrow-icon::after {
+  width: 6rpx;
+  height: 28rpx;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) rotate(45deg);
+  transform-origin: center;
+}

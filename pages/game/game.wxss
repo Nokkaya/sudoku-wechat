@@ -1,0 +1,408 @@
+/* pages/game/game.wxss */
+.game-container {
+  min-height: 100vh;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  background: #faf9f7;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 960rpx;
+  margin: 0 auto;
+  padding: 0 40rpx;
+  min-height: auto;
+  /* Override app.wxss to prevent double spacing */
+}
+
+/* 顶部信息栏 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48rpx;
+}
+
+.header-left {
+  flex: 0 0 auto;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.mode-tag {
+  display: inline-block;
+  padding: 16rpx 28rpx;
+  background: transparent;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #2d3436;
+}
+
+.timer-wrapper {
+  display: inline-flex;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  background: #2d3436;
+  border-radius: 48rpx;
+}
+
+.timer {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #faf9f7;
+  font-family: -apple-system, "SF Mono", monospace;
+  letter-spacing: 2rpx;
+}
+
+.hint-label {
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #b2bec3;
+}
+
+.hint-count {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #00b894;
+}
+
+/* 数字键盘 - 网格布局 */
+.number-pad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20rpx;
+  padding: 32rpx;
+  background: #ffffff;
+  border-radius: 40rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 16rpx 64rpx rgba(0, 0, 0, 0.06);
+}
+
+.num-btn {
+  /* 5 items per row: (100% - 4 * 20rpx) / 5 */
+  width: calc((100% - 80rpx) / 5);
+  /* Maintain aspect ratio roughly or fixed height? Let's fix height to be proportional or just square-ish but simpler */
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f2f6;
+  border: none;
+  border-radius: 20rpx;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: #2d3436;
+  transition: all 0.1s ease;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+}
+
+.num-btn::after {
+  content: none;
+}
+
+.btn-active {
+  transform: scale(0.92);
+  background: #2d3436 !important;
+  color: #faf9f7 !important;
+}
+
+.clear-btn.btn-active {
+  background: #ff6b6b !important;
+  color: #ffffff !important;
+}
+
+.clear-btn {
+  background: #ffeaea;
+}
+
+/* Erase Icon (CSS) */
+.erase-icon {
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+}
+
+.erase-icon::before,
+.erase-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36rpx;
+  height: 6rpx;
+  background: #ff6b6b;
+  border-radius: 4rpx;
+  transition: all 0.1s ease;
+}
+
+.erase-icon::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.erase-icon::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.clear-btn.btn-active .erase-icon::before,
+.clear-btn.btn-active .erase-icon::after {
+  background: #ffffff;
+}
+
+/* 功能按钮 */
+.actions {
+  display: flex;
+  gap: 32rpx;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  padding: 32rpx;
+  background: #ffffff;
+  border: none;
+  border-radius: 32rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2d3436;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.06);
+  transition: all 0.1s ease;
+}
+
+.action-btn.btn-active {
+  transform: scale(0.95);
+  background: #f1f2f6;
+}
+
+.icon-inner {
+  width: 44rpx;
+  height: 44rpx;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Hint Icon: Lightbulb (Green) */
+.icon-inner.hint {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300b894' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3Cpath d='M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14'/%3E%3C/svg%3E");
+}
+
+/* Restart Icon: Refresh (Dark) */
+.icon-inner.restart {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d3436' stroke-width='2.5'%3E%3Cpath d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8'/%3E%3Cpath d='M3 3v5h5'/%3E%3C/svg%3E");
+}
+
+.action-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2d3436;
+}
+
+/* 自定义弹窗样式 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 40rpx;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 48rpx;
+  padding: 64rpx;
+  max-width: 720rpx;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 40rpx 120rpx rgba(0, 0, 0, 0.3);
+}
+
+.modal-icon {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 0 auto 40rpx;
+  background: #ffeaa7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-alert {
+  font-size: 64rpx;
+  font-weight: 700;
+  color: #fdcb6e;
+}
+
+.modal-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #2d3436;
+  margin: 0 0 16rpx;
+}
+
+.modal-text {
+  display: block;
+  font-size: 30rpx;
+  color: #636e72;
+  margin: 0 0 56rpx;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 24rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 28rpx 48rpx;
+  border: none;
+  border-radius: 24rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.modal-btn::after {
+  border: none;
+}
+
+/* Secondary Button */
+.modal-btn-secondary {
+  background: #f1f2f6;
+  color: #2d3436;
+}
+
+.modal-btn-secondary:active,
+.modal-btn-secondary:hover {
+  background: #dfe6e9;
+}
+
+/* Primary Button */
+.modal-btn-primary {
+  background: #00b894;
+  color: #ffffff;
+}
+
+.modal-btn-primary:active,
+.modal-btn-primary:hover {
+  background: #00a085;
+}
+
+
+/* 完成弹窗 (Existing) - checking if needs updates */
+.completed-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(45, 52, 54, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40rpx;
+}
+
+.completed-modal {
+  background: #faf9f7;
+  padding: 96rpx 80rpx;
+  border-radius: 48rpx;
+  text-align: center;
+  max-width: 800rpx;
+  width: 100%;
+  box-shadow: 0 64rpx 160rpx rgba(0, 0, 0, 0.2);
+}
+
+.completed-title {
+  display: block;
+  font-size: 64rpx;
+  font-weight: 700;
+  color: #00b894;
+  margin-bottom: 16rpx;
+}
+
+.completed-subtitle {
+  display: block;
+  font-size: 32rpx;
+  color: #636e72;
+  margin-bottom: 64rpx;
+}
+
+.completed-stats {
+  display: flex;
+  justify-content: center;
+  gap: 80rpx;
+  margin-bottom: 64rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 72rpx;
+  font-weight: 700;
+  color: #2d3436;
+  font-family: -apple-system, "SF Mono", monospace;
+}
+
+.stat-label {
+  font-size: 28rpx;
+  color: #b2bec3;
+  margin-top: 12rpx;
+}
+
+.completed-btn {
+  width: 100%;
+  padding: 36rpx;
+  background: #2d3436;
+  border: none;
+  border-radius: 64rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #faf9f7;
+  box-shadow: 0 16rpx 48rpx rgba(45, 52, 54, 0.25);
+}
+
+.completed-btn::after {
+  border: none;
+}
+
+/* 响应式 */
+@media (max-width: 375px) {
+  .num-btn {
+    font-size: 40rpx;
+  }
+
+  .clear-btn {
+    font-size: 48rpx;
+  }
+}

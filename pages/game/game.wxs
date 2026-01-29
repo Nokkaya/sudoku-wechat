@@ -1,0 +1,19 @@
+// pages/game/game.wxs
+function formatTime(seconds) {
+  if (!seconds && seconds !== 0) return '00:00';
+
+  var mins = Math.floor(seconds / 60);
+  var secs = seconds % 60;
+
+  var minStr = mins.toString();
+  if (mins < 10) minStr = '0' + minStr;
+
+  var secStr = secs.toString();
+  if (secs < 10) secStr = '0' + secStr;
+
+  return minStr + ':' + secStr;
+}
+
+module.exports = {
+  formatTime: formatTime
+};

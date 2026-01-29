@@ -1,0 +1,29 @@
+<!--components/sudoku-board/sudoku-board.wxml-->
+<wxs src="./board.wxs" module="logic" />
+
+<view class="sudoku-board">
+  <view class="board-grid">
+    <view
+      class="board-row"
+      wx:for="{{board}}"
+      wx:for-item="row"
+      wx:for-index="rowIndex"
+      wx:key="rowIndex"
+    >
+      <view
+        class="board-cell {{logic.getCellClass(rowIndex, colIndex, row[colIndex], selectedCell)}} {{originalBoard[rowIndex][colIndex] !== 0 ? 'original' : ''}}"
+        wx:for="{{row}}"
+        wx:for-item="cellValue"
+        wx:for-index="colIndex"
+        wx:key="colIndex"
+        data-row="{{rowIndex}}"
+        data-col="{{colIndex}}"
+        bindtap="onCellTap"
+        hover-class="cell-active-hover"
+        hover-stay-time="100"
+      >
+        <text class="cell-number" wx:if="{{cellValue !== 0}}">{{cellValue}}</text>
+      </view>
+    </view>
+  </view>
+</view>
