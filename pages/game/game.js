@@ -26,7 +26,7 @@ Page({
 
     // 启用返回确认
     wx.enableAlertBeforeUnload({
-      message: '当前游戏进度将丢失，确定要返回吗？',
+      message: '游戏进度已自动保存，确定要返回主菜单吗？',
     })
 
     if (continueGame === 'true') {
